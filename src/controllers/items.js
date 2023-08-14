@@ -24,7 +24,7 @@ export const postScrapedData = async (req, res) => {
     const description = $('div._1mXcCf.RmoJUa').text().trim() || null;
     const rating_count = parseInt($('span._2_R_DZ').text().replace(/,/g, '').split(' ')[0]);
     const ratingsText = $('span._2_R_DZ span._13vcmD').next().text();
-    const review_count = parseInt(ratingsText.split(' ')[0]);
+    const review_count = parseInt(ratingsText.replace(',', '').split(' ')[0]);
     const rating = parseFloat($('div._3LWZlK').text());
     const media_count = $('img.q6DClP').length;
 
