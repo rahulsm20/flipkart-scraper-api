@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const connectToDB=async(url)=>{
+const connectToDB=async(url:string)=>{
     try{
       await  mongoose.connect(url);
     }

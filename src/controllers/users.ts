@@ -1,8 +1,10 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { UserModel } from "../models/user.model.js";
+import { UserModel } from "../models/user.model";
+import { Request, Response } from "express";
 
-export const Login = async (req, res) => {
+
+export const Login = async (req:Request, res:Response) => {
   const { username, password } = req.body;
 
   try {
@@ -12,15 +14,16 @@ export const Login = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const isPasswordCorrect = await bcrypt.compare(password, user.password);
-
-    if (!isPasswordCorrect) {
+    if(user.password){
+      const isPasswordCorrect = bcrypt.compare(password, user.password);
+      if (!isPasswordCorrect) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
+   }
 
     const token = jwt.sign(
-      { email: user.email, id: user._id },
-      process.env.JWT_SECRET,
+      { email: user.username, id: user._id },
+      process.env.JWT_SECRET||"",
       {
         expiresIn: "1h",
       }
@@ -32,7 +35,7 @@ export const Login = async (req, res) => {
   }
 };
 
-export const Signup = async (req, res) => {
+export const Signup = async (req:Request, res:Response) => {
   const { username, password } = req.body;
   if (!password) {
     return res.status(400).json({ message: "No password" });
@@ -53,17 +56,20 @@ export const Signup = async (req, res) => {
   }
 };
 
-export const validateUser = async (username, password) => {
+export const validateUser = async (req:Request,res:Response) => {
+  const {username, password} = req.body;
   try {
     const user = await UserModel.findOne({ username });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-
-    const isPasswordCorrect = await bcrypt.compare(password, user.password);
-
-    if (!isPasswordCorrect) {
-      return res.status(401).json({ message: "Invalid credentials" });
+    if(user.password){
+      const isPasswordCorrect = bcrypt.compare(password, user.password);
+      if (!isPasswordCorrect) {
+        return res.status(401).json({ message: "Invalid credentials" });
+      }
     }
-  } catch (error) {}
+  } catch (error) {
+    return res.status(400).json(error)
+  }
 };

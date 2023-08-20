@@ -2,22 +2,23 @@
 [Postman documentation](https://documenter.getpostman.com/view/22495929/2s9Xy5NWqv)
 
 ### Tech Stack
+* Typescript
 * Node.js
 * ExpressJS
 * JWT
-* MongoDB
-* Mongoose
+* MongoDB + Mongoose
+* AWS
 
 Deployed to AWS ([Live endpoint](https://xopepr7x6d.execute-api.ap-south-1.amazonaws.com/dev/))
 
 ### System Design
-![system-design](https://github.com/rahulsm20/flipkart-scraper-api/assets/77540672/2d837ee7-ba6b-4c17-b34e-e8bb97fdc98b)
+![system-design](https://github.com/rahulsm20/flipkart-scraper-api/assets/77540672/cc550f3a-9928-4b19-abd9-49f36e2dade6)
 
 ### Steps to run locally 
 
 * Clone this repo
   ```
-  git clone https://github.com/rahulsm20/flipkart-scraper-api
+  git clone https://github.com/rahulsm20/flipkart-scraper-api.git
   ```
 
 * Enter folder
