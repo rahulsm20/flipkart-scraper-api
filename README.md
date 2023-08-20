@@ -13,7 +13,8 @@ Deployed to AWS ([Live endpoint](https://xopepr7x6d.execute-api.ap-south-1.amazo
 
 
 ### Endpoints
-![endpoints](https://github.com/rahulsm20/flipkart-scraper-api/assets/77540672/a3a16b8d-fd9d-44a4-bab0-61d99fcf4159)
+![endpoints](https://github.com/rahulsm20/flipkart-scraper-api/assets/77540672/4ce21770-a257-4a0b-9006-d5d9759d26fb)
+
 
 ### System Design
 ![system-design](https://github.com/rahulsm20/flipkart-scraper-api/assets/77540672/cc550f3a-9928-4b19-abd9-49f36e2dade6)
